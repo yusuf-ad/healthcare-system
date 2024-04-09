@@ -8,9 +8,20 @@ import {
   Route,
   RouterProvider,
 } from "react-router-dom";
+import HomePage from "./pages/HomePage.jsx";
+import AppointmentPage from "./pages/AppointmentPage.jsx";
+import UserInfoPage from "./pages/UserInfoPage.jsx";
 
 const router = createBrowserRouter(
-  createRoutesFromElements(<Route path="/" element={<App />}></Route>)
+  createRoutesFromElements(
+    <Route path="/" element={<App />}>
+      <Route index element={<HomePage />} />
+
+      <Route path="/appointment" element={<AppointmentPage />}>
+        <Route path="/appointment/info" element={<UserInfoPage />} />
+      </Route>
+    </Route>
+  )
 );
 
 ReactDOM.createRoot(document.getElementById("root")).render(
