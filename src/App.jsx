@@ -38,7 +38,9 @@ function App() {
         <nav className="flex gap-10">
           <ul className="flex gap-5 items-center text-gray-500 font-semibold">
             <li className="hover:text-blue-400 transition-colors duration-100">
-              <NavLink to="/">Home</NavLink>
+              <NavLink activeClassName="active" to="/">
+                Home
+              </NavLink>
             </li>
             <li className="hover:text-blue-400 transition-colors duration-100">
               <NavLink to="/staff">Our doctor staff</NavLink>

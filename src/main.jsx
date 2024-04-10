@@ -10,7 +10,7 @@ import {
 } from "react-router-dom";
 import HomePage from "./pages/HomePage.jsx";
 import AppointmentPage from "./pages/AppointmentPage.jsx";
-import UserInfoPage from "./pages/UserInfoPage.jsx";
+import UserInfoPage from "./components/ui/UserInfoForm.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -18,7 +18,8 @@ const router = createBrowserRouter(
       <Route index element={<HomePage />} />
 
       <Route path="/appointment" element={<AppointmentPage />}>
-        <Route path="/appointment/info" element={<UserInfoPage />} />
+        <Route index element={<UserInfoPage />} />
+        <Route path="/appointment/:form" element={<UserInfoPage />} />
       </Route>
     </Route>
   )
