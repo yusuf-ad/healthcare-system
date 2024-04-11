@@ -3,7 +3,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Link } from "react-router-dom";
 
-function UserInfoForm() {
+function UserInfoForm({ currentPage, setCurrentPage, page, setPage }) {
   return (
     <form className="flex flex-col gap-6 justify-end">
       <div className="grid w-full max-w-xl items-center gap-3">
@@ -21,9 +21,15 @@ function UserInfoForm() {
         <Input type="tel" id="phone" placeholder="0 541 295 87 61" />
       </div>
 
-      <Link className="self-end" to={"/appointment/book"}>
-        <Button className="w-28  mt-2 py-6">Next</Button>
-      </Link>
+      {+page === 1 && (
+        <Link
+          onClick={() => setPage(2)}
+          className="self-end"
+          to={"/appointment/book"}
+        >
+          <Button className="w-28  mt-2 py-6">Next</Button>
+        </Link>
+      )}
     </form>
   );
 }

@@ -20,8 +20,9 @@ import {
 } from "@/components/ui/popover";
 import { Label } from "@radix-ui/react-label";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
-function BookingForm() {
+function BookingForm({ currentPage, setCurrentPage, page, setPage }) {
   const [date, setDate] = useState();
 
   return (
@@ -115,7 +116,13 @@ function BookingForm() {
         </Select>
       </div>
 
-      <Button className="w-28 self-end mt-2 py-6">Book</Button>
+      <Link
+        onClick={() => setPage(3)}
+        className="self-end"
+        to={"/appointment/confirm"}
+      >
+        <Button className="w-28  mt-2 py-6">Book</Button>
+      </Link>
     </form>
   );
 }

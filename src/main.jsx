@@ -21,6 +21,14 @@ const router = createBrowserRouter(
         <Route index element={<UserInfoPage />} />
         <Route path="/appointment/:form" element={<UserInfoPage />} />
       </Route>
+      <Route
+        path="*"
+        element={
+          <p className="text-red-600 text-xl text-center mt-12 font-bold">
+            404 NOT FOUND
+          </p>
+        }
+      />
     </Route>
   )
 );
