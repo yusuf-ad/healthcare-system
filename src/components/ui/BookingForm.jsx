@@ -117,7 +117,10 @@ function BookingForm({ currentPage, setCurrentPage, page, setPage }) {
       </div>
 
       <Link
-        onClick={() => setPage(3)}
+        onClick={() => {
+          setPage(3);
+          setCurrentPage(3);
+        }}
         className="self-end"
         to={"/appointment/confirm"}
       >

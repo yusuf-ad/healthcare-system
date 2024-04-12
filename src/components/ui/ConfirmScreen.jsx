@@ -2,7 +2,7 @@ import { Button } from "./button";
 
 function ConfirmScreen() {
   return (
-    <div className="mx-auto max-w-xl rounded-sm bg-white py-6 px-8 flex flex-col">
+    <div className="mx-auto max-w-xl rounded-sm bg-white py-6 px-8 flex flex-col shadow-md">
       <h2 className="text-xl font-bold mb-3">Confirm your Appointment</h2>
       <div className="w-full h-[1px] bg-slate-200 mb-6"></div>
 
@@ -31,7 +31,7 @@ function ConfirmScreen() {
         <tbody className="text-left text-slate-500">
           <tr>
             <td>Neurology</td>
-            <td>Sadık Düşmen</td>
+            <td>Sadik Düsmen</td>
             <td></td>
           </tr>
         </tbody>

@@ -23,7 +23,10 @@ function UserInfoForm({ currentPage, setCurrentPage, page, setPage }) {
 
       {+page === 1 && (
         <Link
-          onClick={() => setPage(2)}
+          onClick={() => {
+            setPage(2);
+            setCurrentPage(2);
+          }}
           className="self-end"
           to={"/appointment/book"}
         >
