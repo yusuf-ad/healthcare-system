@@ -1,6 +1,17 @@
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "./button";
 
+import { format } from "date-fns";
+import { confirmAppointment } from "@/slices/appointmentSlice";
+
 function ConfirmScreen() {
+  const { userInfo, appointment } = useSelector((state) => state.appointment);
+
+  const { name, surname, phone } = userInfo;
+  const { department, doctor, date, time } = appointment;
+
+  const dispatch = useDispatch();
+
   return (
     <div className="mx-auto max-w-xl rounded-sm bg-white py-6 px-8 flex flex-col shadow-md">
       <h2 className="text-xl font-bold mb-3">Confirm your Appointment</h2>
@@ -14,10 +25,10 @@ function ConfirmScreen() {
             <th></th>
           </tr>
         </thead>
-        <tbody className="text-left text-slate-500">
+        <tbody className="text-left text-slate-500 capitalize">
           <tr>
-            <td>Yusuf Ad</td>
-            <td>0 536 643 05 13</td>
+            <td>{name + " " + surname} </td>
+            <td>{phone} </td>
             <td></td>
           </tr>
         </tbody>
@@ -28,10 +39,10 @@ function ConfirmScreen() {
             <th></th>
           </tr>
         </thead>
-        <tbody className="text-left text-slate-500">
+        <tbody className="text-left text-slate-500 capitalize">
           <tr>
-            <td>Neurology</td>
-            <td>Sadik Düsmen</td>
+            <td>{department} </td>
+            <td>{doctor} </td>
             <td></td>
           </tr>
         </tbody>
@@ -44,14 +55,17 @@ function ConfirmScreen() {
         </thead>
         <tbody className="text-left text-slate-500">
           <tr>
-            <td>10.04.24</td>
-            <td>12:00</td>
+            <td>{format(date, "dd.MM.yyyy")}</td>
+            <td>{time}</td>
             <td></td>
           </tr>
         </tbody>
       </table>
 
-      <Button className="mt-8 self-end py-6 bg-green-600 hover:bg-green-700">
+      <Button
+        onClick={() => dispatch(confirmAppointment())}
+        className="mt-8 self-end py-6 bg-green-600 hover:bg-green-700"
+      >
         Confirm Appointment
       </Button>
     </div>

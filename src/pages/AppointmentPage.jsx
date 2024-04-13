@@ -12,6 +12,12 @@ function AppointmentPage() {
 
   const navigate = useNavigate();
 
+  useEffect(() => {
+    if (+page === 1) navigate("/appointment/info");
+    if (+page === 2) navigate("/appointment/book");
+    if (+page === 3) navigate("/appointment/confirm");
+  }, [page, navigate]);
+
   return (
     <section className="py-12">
       <div className="max-w-5xl mx-auto">

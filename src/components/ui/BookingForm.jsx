@@ -32,6 +32,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { z } from "zod";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
+import { useDispatch, useSelector } from "react-redux";
+import { setAppointment } from "@/slices/appointmentSlice";
 
 const formSchema = z.object({
   department: z.string(),
@@ -41,20 +43,22 @@ const formSchema = z.object({
 });
 
 function BookingForm({ currentPage, setCurrentPage, page, setPage }) {
+  const { appointment } = useSelector((state) => state.appointment);
+
   const form = useForm({
     resolver: zodResolver(formSchema),
+    defaultValues: appointment,
   });
 
-  const [date, setDate] = useState();
-
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const onSuccess = (data) => {
-    console.log(data);
-
     setPage(3);
     setCurrentPage(3);
     navigate("/appointment/confirm");
+
+    dispatch(setAppointment(data));
   };
 
   return (

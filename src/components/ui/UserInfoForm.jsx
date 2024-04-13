@@ -16,6 +16,8 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
 import { isValidPhone } from "@/utils/isValidPhone";
 import InputMask from "react-input-mask";
+import { setUserInfo } from "@/slices/appointmentSlice";
+import { useDispatch, useSelector } from "react-redux";
 
 const formSchema = z.object({
   name: z
@@ -32,16 +34,22 @@ const formSchema = z.object({
 });
 
 function UserInfoForm({ currentPage, setCurrentPage, page, setPage }) {
+  const { userInfo } = useSelector((state) => state.appointment);
+
   const form = useForm({
     resolver: zodResolver(formSchema),
+    defaultValues: userInfo,
   });
 
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
-  const onSuccess = () => {
+  const onSuccess = (data) => {
     setPage(2);
     setCurrentPage(2);
     navigate("/appointment/book");
+
+    dispatch(setUserInfo(data));
   };
 
   return (
