@@ -49,7 +49,9 @@ function BookingForm({ currentPage, setCurrentPage, page, setPage }) {
 
   const navigate = useNavigate();
 
-  const onSuccess = () => {
+  const onSuccess = (data) => {
+    console.log(data);
+
     setPage(3);
     setCurrentPage(3);
     navigate("/appointment/confirm");
@@ -140,16 +142,16 @@ function BookingForm({ currentPage, setCurrentPage, page, setPage }) {
                       <Button
                         variant={"outline"}
                         className={cn(
-                          "w-full pl-3 text-left font-normal",
+                          "w-full pl-4 flex justify-start font-normal",
                           !field.value && "text-muted-foreground"
                         )}
                       >
+                        <CalendarIcon className="mr-2 h-4 w-4 opacity-50" />
                         {field.value ? (
                           format(field.value, "PPP")
                         ) : (
                           <span>Pick a date</span>
                         )}
-                        <CalendarIcon className="ml-auto h-4 w-4 opacity-50" />
                       </Button>
                     </FormControl>
                   </PopoverTrigger>
@@ -159,7 +161,8 @@ function BookingForm({ currentPage, setCurrentPage, page, setPage }) {
                       selected={field.value}
                       onSelect={field.onChange}
                       disabled={(date) =>
-                        date > new Date() || date < new Date("1900-01-01")
+                        date < new Date(Date.now()) ||
+                        date > new Date(Date.now() + 1000 * 60 * 60 * 24 * 10)
                       }
                       initialFocus
                     />
@@ -170,34 +173,6 @@ function BookingForm({ currentPage, setCurrentPage, page, setPage }) {
               </FormItem>
             )}
           />
-
-          <div className="grid w-full max-w-xl items-start gap-[6px]">
-            <Label className="text-sm font-medium" htmlFor="phone">
-              Select Date
-            </Label>
-            <Popover>
-              <PopoverTrigger asChild>
-                <Button
-                  variant={"outline"}
-                  className={cn(
-                    "w-full justify-start text-left font-normal",
-                    !date && "text-muted-foreground"
-                  )}
-                >
-                  <CalendarIcon className="mr-2 h-4 w-4" />
-                  {date ? format(date, "PPP") : <span>Pick a date</span>}
-                </Button>
-              </PopoverTrigger>
-              <PopoverContent align="start" className="w-auto p-0">
-                <Calendar
-                  mode="single"
-                  selected={date}
-                  onSelect={setDate}
-                  initialFocus
-                />
-              </PopoverContent>
-            </Popover>
-          </div>
 
           <FormField
             control={form.control}

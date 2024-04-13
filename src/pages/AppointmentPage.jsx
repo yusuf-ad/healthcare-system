@@ -3,11 +3,14 @@ import BookingForm from "@/components/ui/BookingForm";
 import ConfirmScreen from "@/components/ui/ConfirmScreen";
 import UserInfoForm from "@/components/ui/UserInfoForm";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 function AppointmentPage() {
   const [page, setPage] = useState("1");
   const [currentPage, setCurrentPage] = useState("1");
+
+  const navigate = useNavigate();
 
   return (
     <section className="py-12">
