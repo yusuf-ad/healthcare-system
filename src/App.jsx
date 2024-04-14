@@ -48,6 +48,9 @@ function App() {
             <li className="hover:text-blue-400 transition-colors duration-100">
               <NavLink to="/communication">Communication</NavLink>
             </li>
+            <li className="hover:text-blue-400 transition-colors duration-100">
+              <NavLink to="/appointments">Appointments</NavLink>
+            </li>
           </ul>
           <NavLink to="/appointment">
             <Button className="bg-skin-button-accent hover:bg-skin-button-accent-hover py-6 transition-colors duration-100">

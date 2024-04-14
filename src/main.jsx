@@ -14,11 +14,14 @@ import UserInfoPage from "./components/ui/UserInfoForm.jsx";
 
 import { Provider } from "react-redux";
 import { store } from "./store.js";
+import AppointmentsPage from "./pages/AppointmentsPage.jsx";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
     <Route path="/" element={<App />}>
       <Route index element={<HomePage />} />
+
+      <Route path="/appointments" element={<AppointmentsPage />} />
 
       <Route path="/appointment" element={<AppointmentPage />}>
         <Route index element={<UserInfoPage />} />

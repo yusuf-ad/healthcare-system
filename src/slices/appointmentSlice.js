@@ -31,6 +31,7 @@ const appointmentSlice = createSlice({
       const newAppointment = {
         ...state.appointment,
         ...state.userInfo,
+        status: "scheduled",
       };
 
       state.appointments.push(newAppointment);
