@@ -3,6 +3,7 @@ import { Button } from "./button";
 
 import { format } from "date-fns";
 import { confirmAppointment } from "@/slices/appointmentSlice";
+import { Link, useNavigate } from "react-router-dom";
 
 function ConfirmScreen() {
   const { userInfo, appointment } = useSelector((state) => state.appointment);
@@ -11,6 +12,7 @@ function ConfirmScreen() {
   const { department, doctor, date, time } = appointment;
 
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   return (
     <div className="mx-auto max-w-xl rounded-sm bg-white py-6 px-8 flex flex-col shadow-md">
@@ -63,10 +65,15 @@ function ConfirmScreen() {
       </table>
 
       <Button
-        onClick={() => dispatch(confirmAppointment())}
+        asChild
+        onClick={() => {
+          dispatch(confirmAppointment());
+
+          navigate("/appointments");
+        }}
         className="mt-8 self-end py-6 bg-green-600 hover:bg-green-700"
       >
-        Confirm Appointment
+        <Link to="/appointments">Confirm Appointment</Link>
       </Button>
     </div>
   );

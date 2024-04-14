@@ -6,10 +6,18 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import {
+  Popover,
+  PopoverContent,
+  PopoverTrigger,
+} from "@/components/ui/popover";
 import { Badge } from "@/components/ui/badge";
 import { format } from "date-fns";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { calcMinutes } from "@/utils/calcMinutes";
+import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
+import { updateStatus } from "@/slices/appointmentSlice";
 
 function generateBadge(appointment) {
   const appointmentDate = new Date(appointment.date);
@@ -34,6 +42,25 @@ function generateBadge(appointment) {
 function AppointmentsPage() {
   const { appointments } = useSelector((state) => state.appointment);
 
+  const dispatch = useDispatch();
+
+  if (appointments.length === 0) {
+    return (
+      <section className="py-12">
+        <div className="max-w-5xl mx-auto font-bold">
+          <p className="">There is no appointments yet. </p>
+
+          <Button
+            className="mt-6 py-6 bg-skin-button-accent hover:bg-skin-button-accent-hover"
+            asChild
+          >
+            <Link to="/appointment/info">Book an appointment Now</Link>
+          </Button>
+        </div>
+      </section>
+    );
+  }
+
   return (
     <section className="py-12">
       <div className="max-w-5xl mx-auto px-8 xl:px-0 ">
@@ -44,26 +71,86 @@ function AppointmentsPage() {
           <Table>
             <TableHeader>
               <TableRow>
+                <TableHead className="text-left"></TableHead>
                 <TableHead className="text-left">Status</TableHead>
-                <TableHead className="max-w-max">Doctor</TableHead>
-                <TableHead>Department</TableHead>
-                <TableHead className="text-right">Date</TableHead>
-                <TableHead className="text-right">Time</TableHead>
+                <TableHead className="text-left">Date</TableHead>
+                <TableHead className="text-left">Time</TableHead>
+                <TableHead className="max-w-max text-left">Doctor</TableHead>
+                <TableHead className="text-left">Department</TableHead>
+                <TableHead className="text-right">User</TableHead>
               </TableRow>
             </TableHeader>
             <TableBody className="capitalize">
               {appointments.map((appointment) => (
                 <TableRow key={appointment.date + appointment.time}>
-                  <TableCell>{generateBadge(appointment)}</TableCell>
-                  <TableCell className="font-medium min-w-max">
-                    {appointment.doctor.split("-").join(" ")}
+                  <TableCell>
+                    {appointment.status === "scheduled" && (
+                      <Popover>
+                        <PopoverTrigger>
+                          <i className="fa-solid fa-ellipsis-vertical text-lg text-slate-800"></i>
+                        </PopoverTrigger>
+                        <PopoverContent className=" py-2 pb-4 w-52 ">
+                          <ul>
+                            <li
+                              onClick={() =>
+                                dispatch(
+                                  updateStatus({
+                                    status: "cancelled",
+                                    id: appointment.id,
+                                  })
+                                )
+                              }
+                              className="border-b-2 py-3 px-2 hover:text-red-600 cursor-pointer"
+                            >
+                              Set cancelled
+                            </li>
+                            <li
+                              onClick={() =>
+                                dispatch(
+                                  updateStatus({
+                                    status: "completed",
+                                    id: appointment.id,
+                                  })
+                                )
+                              }
+                              className="border-b-2 py-3 px-2 hover:text-green-600 cursor-pointer"
+                            >
+                              Set completed
+                            </li>
+                          </ul>
+                        </PopoverContent>
+                      </Popover>
+                    )}
                   </TableCell>
-                  <TableCell>{appointment.department}</TableCell>
-                  <TableCell className="text-right">
+                  <TableCell>{generateBadge(appointment)}</TableCell>
+                  <TableCell className="text-left">
                     {format(appointment.date, "dd.MM.yyyy")}
                   </TableCell>
-                  <TableCell className="text-right">
+                  <TableCell className="text-left">
                     {appointment.time}
+                  </TableCell>
+                  <TableCell className="font-medium min-w-max text-left">
+                    {appointment.doctor.split("-").join(" ")}
+                  </TableCell>
+                  <TableCell className="text-left">
+                    {appointment.department}
+                  </TableCell>
+                  <TableCell className="text-right">
+                    <Popover>
+                      <PopoverTrigger>
+                        <i className="fa-solid fa-eye text-lg text-slate-800"></i>
+                      </PopoverTrigger>
+                      <PopoverContent className=" py-2 pb-4 max-w-max ">
+                        <ul>
+                          <li className="border-b-2 py-3 px-2 capitalize">
+                            Fullname: {appointment.name} {appointment.surname}
+                          </li>
+                          <li className="border-b-2 py-3 px-2 hover:text-green-600 cursor-pointer">
+                            Phone: {appointment.phone}
+                          </li>
+                        </ul>
+                      </PopoverContent>
+                    </Popover>
                   </TableCell>
                 </TableRow>
               ))}
