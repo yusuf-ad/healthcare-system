@@ -1,20 +1,28 @@
-import React from "react";
+// Libraries
+import React, { lazy, Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import App from "./App.jsx";
-import "./index.css";
 import {
   createBrowserRouter,
   createRoutesFromElements,
   Route,
   RouterProvider,
 } from "react-router-dom";
-import HomePage from "./pages/HomePage.jsx";
-import AppointmentPage from "./pages/AppointmentPage.jsx";
-import UserInfoPage from "./components/ui/UserInfoForm.jsx";
 
+// Pages
+const App = lazy(() => import("./App.jsx"));
+const HomePage = lazy(() => import("./pages/HomePage.jsx"));
+const UserInfoForm = lazy(() => import("./components/ui/UserInfoForm.jsx"));
+const AppointmentPage = lazy(() => import("./pages/AppointmentPage.jsx"));
+const AppointmentsPage = lazy(() => import("./pages/AppointmentsPage.jsx"));
+
+import Loader from "./components/ui/Loader.jsx";
+
+// Store
 import { Provider } from "react-redux";
 import { store } from "./store.js";
-import AppointmentsPage from "./pages/AppointmentsPage.jsx";
+
+// Styles
+import "./index.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
@@ -24,8 +32,8 @@ const router = createBrowserRouter(
       <Route path="/appointments" element={<AppointmentsPage />} />
 
       <Route path="/appointment" element={<AppointmentPage />}>
-        <Route index element={<UserInfoPage />} />
-        <Route path="/appointment/:form" element={<UserInfoPage />} />
+        <Route index element={<UserInfoForm />} />
+        <Route path="/appointment/:form" element={<UserInfoForm />} />
       </Route>
       <Route
         path="*"
@@ -42,7 +50,9 @@ const router = createBrowserRouter(
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
     <Provider store={store}>
-      <RouterProvider router={router} />
+      <Suspense fallback={<Loader />}>
+        <RouterProvider router={router} />
+      </Suspense>
     </Provider>
   </React.StrictMode>
 );

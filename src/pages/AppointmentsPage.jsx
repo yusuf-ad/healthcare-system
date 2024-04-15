@@ -145,7 +145,7 @@ function AppointmentsPage() {
                           <li className="border-b-2 py-3 px-2 capitalize">
                             Fullname: {appointment.name} {appointment.surname}
                           </li>
-                          <li className="border-b-2 py-3 px-2 hover:text-green-600 cursor-pointer">
+                          <li className="border-b-2 py-3 px-2">
                             Phone: {appointment.phone}
                           </li>
                         </ul>
