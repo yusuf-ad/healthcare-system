@@ -13,9 +13,9 @@ function AppointmentPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    if (+page === 1) navigate("/appointment/info");
-    if (+page === 2) navigate("/appointment/book");
-    if (+page === 3) navigate("/appointment/confirm");
+    if (+page === 1) navigate("/healthcare-system/appointment/info");
+    if (+page === 2) navigate("/healthcare-system/appointment/book");
+    if (+page === 3) navigate("/healthcare-system/appointment/confirm");
   }, [page, navigate]);
 
   return (

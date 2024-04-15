@@ -15,7 +15,7 @@ function HomePage() {
               A Healthier Tomorrow Starts Today: Schedule your Appointment! Your
               Wellness, Our Expertise: Set Your Appointment Today.
             </p>
-            <Link to={"/appointment"}>
+            <Link to={"/healthcare-system/appointment"}>
               <Button className="bg-white text-black py-6 transition-colors duration-100  hover:text-white">
                 Book An Appointment
               </Button>
@@ -39,7 +39,7 @@ function HomePage() {
 
           <div className="mt-12 max-w-2xl mx-auto">
             <div className="flex justify-between gap-4 items-center ">
-              <Link to={"/appointment"}>
+              <Link to={"/healthcare-system/appointment"}>
                 <div className="flex flex-col items-center gap-4 bg-slate-200 py-8 px-4 group/first rounded-sm">
                   <div className="relative bg-white w-16 h-16 rounded-lg flex items-center justify-center">
                     <i className="fa-solid fa-user-doctor text-3xl"></i>
@@ -65,7 +65,7 @@ function HomePage() {
                 <div className="w-2 h-2 bg-slate-400 rounded-full"></div>
               </div>
 
-              <Link to={"/appointment"}>
+              <Link to={"/healthcare-system/appointment"}>
                 <div className="flex flex-col items-center gap-4 bg-slate-200 py-8 px-4 group/second rounded-sm">
                   <div className="relative bg-white w-16 h-16 rounded-lg flex items-center justify-center">
                     <i className="fa-regular fa-calendar-check text-3xl"></i>

@@ -56,7 +56,7 @@ function BookingForm({ currentPage, setCurrentPage, page, setPage }) {
   const onSuccess = (data) => {
     setPage(3);
     setCurrentPage(3);
-    navigate("/appointment/confirm");
+    navigate("/healthcare-system/appointment/confirm");
 
     dispatch(setAppointment(data));
   };

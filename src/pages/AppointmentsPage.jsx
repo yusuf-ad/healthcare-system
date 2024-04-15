@@ -54,7 +54,9 @@ function AppointmentsPage() {
             className="mt-6 py-6 bg-skin-button-accent hover:bg-skin-button-accent-hover"
             asChild
           >
-            <Link to="/appointment/info">Book an appointment Now</Link>
+            <Link to="/healthcare-system/appointment/info">
+              Book an appointment Now
+            </Link>
           </Button>
         </div>
       </section>

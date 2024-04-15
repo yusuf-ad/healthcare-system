@@ -47,7 +47,7 @@ function UserInfoForm({ currentPage, setCurrentPage, page, setPage }) {
   const onSuccess = (data) => {
     setPage(2);
     setCurrentPage(2);
-    navigate("/appointment/book");
+    navigate("/healthcare-system/appointment/book");
 
     dispatch(setUserInfo(data));
   };

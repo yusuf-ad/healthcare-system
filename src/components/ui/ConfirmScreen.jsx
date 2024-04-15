@@ -68,12 +68,10 @@ function ConfirmScreen() {
         asChild
         onClick={() => {
           dispatch(confirmAppointment());
-
-          navigate("/appointments");
         }}
         className="mt-8 self-end py-6 bg-green-600 hover:bg-green-700"
       >
-        <Link to="/appointments">Confirm Appointment</Link>
+        <Link to="/healthcare-system/appointments">Confirm Appointment</Link>
       </Button>
     </div>
   );

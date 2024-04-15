@@ -11,14 +11,16 @@ import { Link, useLocation } from "react-router-dom";
 function AppointmentBreadcrumb({ setPage, currentPage }) {
   const location = useLocation();
 
+  console.log(location);
+
   return (
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem onClick={() => setPage(1)}>
           <Link to={"/appointment/info"}>
             {location.pathname.includes("info") ||
-            location.pathname === "/appointment" ||
-            location.pathname === "/appointment/" ? (
+            location.pathname === "/healthcare-system/appointment" ||
+            location.pathname === "/healthcare-system/appointment/" ? (
               <BreadcrumbPage className="text-blue-500 font-bold">
                 Your info
               </BreadcrumbPage>
@@ -33,7 +35,7 @@ function AppointmentBreadcrumb({ setPage, currentPage }) {
           onClick={() => setPage(2)}
           className={`${+currentPage < 2 && "disabled"}`}
         >
-          <Link to={"/appointment/book"}>
+          <Link to={"/healthcare-system/appointment/book"}>
             {location.pathname.includes("book") ? (
               <BreadcrumbPage className="text-blue-500 font-bold">
                 Book Appointment
@@ -50,7 +52,7 @@ function AppointmentBreadcrumb({ setPage, currentPage }) {
           isDisabled={true}
           onClick={() => setPage(3)}
         >
-          <Link to={"/appointment/confirm"}>
+          <Link to={"/healthcare-system/appointment/confirm"}>
             {location.pathname.includes("confirm") ? (
               <BreadcrumbPage className="text-blue-500 font-bold">
                 Confirm Appointment

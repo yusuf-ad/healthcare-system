@@ -26,14 +26,23 @@ import "./index.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="" element={<App />}>
+    <Route path="/healthcare-system/" element={<App />}>
       <Route index element={<HomePage />} />
 
-      <Route path="appointments" element={<AppointmentsPage />} />
+      <Route
+        path="/healthcare-system/appointments"
+        element={<AppointmentsPage />}
+      />
 
-      <Route path="appointment" element={<AppointmentPage />}>
+      <Route
+        path="/healthcare-system/appointment"
+        element={<AppointmentPage />}
+      >
         <Route index element={<UserInfoForm />} />
-        <Route path="appointment/:form" element={<UserInfoForm />} />
+        <Route
+          path="/healthcare-system/appointment/:form"
+          element={<UserInfoForm />}
+        />
       </Route>
       <Route
         path="*"
