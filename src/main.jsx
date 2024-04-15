@@ -26,21 +26,21 @@ import "./index.css";
 
 const router = createBrowserRouter(
   createRoutesFromElements(
-    <Route path="/vite-react-router/" element={<App />}>
+    <Route path="/healthcare-system/" element={<App />}>
       <Route index element={<HomePage />} />
 
       <Route
-        path="/vite-react-router/appointments"
+        path="/healthcare-system/appointments"
         element={<AppointmentsPage />}
       />
 
       <Route
-        path="/vite-react-router/appointment"
+        path="/healthcare-system/appointment"
         element={<AppointmentPage />}
       >
         <Route index element={<UserInfoForm />} />
         <Route
-          path="/vite-react-router/appointment/:form"
+          path="/healthcare-system/appointment/:form"
           element={<UserInfoForm />}
         />
       </Route>
