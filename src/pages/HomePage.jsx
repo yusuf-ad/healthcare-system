@@ -5,13 +5,13 @@ function HomePage() {
   return (
     <main>
       {/* hero */}
-      <section className="bg-hero py-18  px-24 pb-0 ">
-        <div className="max-w-7xl  mx-auto max-h-[840px] grid grid-cols-2 overflow-hidden">
-          <div className="self-center max-w-[480px] flex flex-col gap-8 items-start ">
-            <h1 className="text-5xl text-white font-bold leading-[60px]">
+      <section className="bg-hero md:py-18 md:px-24 py-8 px-4 pb-0 ">
+        <div className="max-w-7xl  mx-auto max-h-[840px] grid grid-cols-2 overflow-hidden ">
+          <div className="self-center max-w-[480px] flex flex-col gap-8 py-6 items-start ">
+            <h1 className="md:text-5xl text-3xl text-white font-bold md:leading-[60px]">
               Book Your Doctor Appointment Online.
             </h1>
-            <p className="text-white">
+            <p className="text-white text-sm">
               A Healthier Tomorrow Starts Today: Schedule your Appointment! Your
               Wellness, Our Expertise: Set Your Appointment Today.
             </p>
@@ -21,7 +21,8 @@ function HomePage() {
               </Button>
             </Link>
           </div>
-          <div className="self-end">
+
+          <div className="self-end ">
             <img className="h-3/4" src="./img/hero-doktor.png" alt="" />
           </div>
         </div>
@@ -30,7 +31,9 @@ function HomePage() {
       <section className="py-16 px-24 pb-24 ">
         <div className=" mx-auto max-w-7xl">
           <div>
-            <h2 className="text-5xl font-bold text-center">How It Works!</h2>
+            <h2 className="md:text-5xl text-4xl font-bold text-center">
+              How It Works!
+            </h2>
             <p className="max-w-xl mx-auto text-center mt-6">
               Discover, book, and experience personalized healthcare
               effortlessly with our user-friendly Doctor Appointment Website.
@@ -38,9 +41,9 @@ function HomePage() {
           </div>
 
           <div className="mt-12 max-w-2xl mx-auto">
-            <div className="flex justify-between gap-4 items-center ">
+            <div className="flex flex-col lg:flex-row items-center lg:justify-between gap-4 lg:items-center ">
               <Link to={"/healthcare-system/appointment"}>
-                <div className="flex flex-col items-center gap-4 bg-slate-200 py-8 px-4 group/first rounded-sm">
+                <div className="flex flex-col max-w-96 items-center gap-4 bg-slate-200 py-8 px-4 group/first rounded-sm">
                   <div className="relative bg-white w-16 h-16 rounded-lg flex items-center justify-center">
                     <i className="fa-solid fa-user-doctor text-3xl"></i>
                     <div className="-right-2 -top-2 absolute w-5 h-5 text-xs bg-skin-button-accent rounded-full text-white flex items-center justify-center font-bold ">
@@ -59,14 +62,14 @@ function HomePage() {
                 </div>
               </Link>
 
-              <div className="flex gap-6 self-start mt-14">
+              <div className="flex flex-col lg:flex-row gap-6  lg:self-start lg:mt-14">
                 <div className="w-2 h-2 bg-slate-400 rounded-full"></div>
                 <div className="w-2 h-2 bg-slate-400 rounded-full"></div>
                 <div className="w-2 h-2 bg-slate-400 rounded-full"></div>
               </div>
 
               <Link to={"/healthcare-system/appointment"}>
-                <div className="flex flex-col items-center gap-4 bg-slate-200 py-8 px-4 group/second rounded-sm">
+                <div className="flex flex-col max-w-96 items-center gap-4 bg-slate-200 py-8 px-4 group/second rounded-sm">
                   <div className="relative bg-white w-16 h-16 rounded-lg flex items-center justify-center">
                     <i className="fa-regular fa-calendar-check text-3xl"></i>
                     <div className="-right-2 -top-2 absolute w-5 h-5 text-xs bg-skin-button-accent rounded-full text-white flex items-center justify-center font-bold">

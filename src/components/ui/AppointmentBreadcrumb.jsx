@@ -11,13 +11,11 @@ import { Link, useLocation } from "react-router-dom";
 function AppointmentBreadcrumb({ setPage, currentPage }) {
   const location = useLocation();
 
-  console.log(location);
-
   return (
     <Breadcrumb>
       <BreadcrumbList>
         <BreadcrumbItem onClick={() => setPage(1)}>
-          <Link to={"/appointment/info"}>
+          <Link to={"/healthcare-system/appointment/info"}>
             {location.pathname.includes("info") ||
             location.pathname === "/healthcare-system/appointment" ||
             location.pathname === "/healthcare-system/appointment/" ? (

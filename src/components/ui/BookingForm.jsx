@@ -1,3 +1,13 @@
+// External libraries
+import { format } from "date-fns";
+import { Calendar as CalendarIcon } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { z } from "zod";
+import { useForm } from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { useDispatch, useSelector } from "react-redux";
+
+// Internal modules
 import {
   Select,
   SelectContent,
@@ -5,12 +15,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-("use client");
-
-import { format } from "date-fns";
-import { Calendar as CalendarIcon } from "lucide-react";
-
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import {
@@ -26,13 +30,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { Label } from "@radix-ui/react-label";
-import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { z } from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
-import { useDispatch, useSelector } from "react-redux";
+import { cn } from "@/lib/utils";
 import { setAppointment } from "@/slices/appointmentSlice";
 
 const formSchema = z.object({
@@ -209,11 +207,7 @@ function BookingForm({ currentPage, setCurrentPage, page, setPage }) {
         </div>
 
         {+page === 2 && (
-          <Button
-            type="submit"
-            className="w-28  mt-2 py-6 self-end"
-            // disabled={!form.formState.isValid}
-          >
+          <Button type="submit" className="w-28  mt-2 py-6 self-end">
             Book
           </Button>
         )}

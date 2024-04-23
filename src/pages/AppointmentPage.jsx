@@ -20,12 +20,12 @@ function AppointmentPage() {
 
   return (
     <section className="py-12">
-      <div className="max-w-5xl mx-auto">
+      <div className="max-w-5xl mx-auto px-6">
         <div className="flex justify-center mt-8">
           <AppointmentBreadcrumb setPage={setPage} currentPage={currentPage} />
         </div>
 
-        <div className="mt-12 mx-auto grid grid-cols-2 items-start gap-8">
+        <div className="mt-12 mx-auto grid lg:grid-cols-2 lg:items-start justify-center  gap-8">
           {(+page === 1 || +page === 2) && (
             <UserInfoForm
               currentPage={currentPage}

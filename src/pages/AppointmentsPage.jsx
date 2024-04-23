@@ -31,11 +31,23 @@ function generateBadge(appointment) {
     appointmentDate < new Date(Date.now()) ||
     appointment.status === "cancelled"
   ) {
-    return <Badge className={"bg-red-600 py-2 px-3"}>cancelled</Badge>;
+    return (
+      <Badge className={"bg-red-600 hover:bg-red-600 py-2 px-3"}>
+        cancelled
+      </Badge>
+    );
   } else if (appointment.status === "completed") {
-    return <Badge className={"bg-green-600 py-2 px-3"}>completed</Badge>;
+    return (
+      <Badge className={"bg-green-600 hover:bg-green-600 py-2 px-3"}>
+        completed
+      </Badge>
+    );
   } else {
-    return <Badge className={"bg-gray-600 py-2 px-3"}>scheduled</Badge>;
+    return (
+      <Badge className={"bg-gray-600 hover:bg-gray-600 py-2 px-3"}>
+        scheduled
+      </Badge>
+    );
   }
 }
 

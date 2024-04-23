@@ -56,9 +56,9 @@ function UserInfoForm({ currentPage, setCurrentPage, page, setPage }) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSuccess)}
-        className="flex flex-col gap-6 justify-end"
+        className="flex flex-col gap-6 justify-end w-[420px] lg:w-full"
       >
-        <div className="grid w-full max-w-xl items-center gap-3">
+        <div className="grid w-full  max-w-xl items-center gap-3">
           <FormField
             name="name"
             control={form.control}
@@ -112,11 +112,7 @@ function UserInfoForm({ currentPage, setCurrentPage, page, setPage }) {
         </div>
 
         {+page === 1 && (
-          <Button
-            type="submit"
-            className="w-28  mt-2 py-6 self-end"
-            // disabled={!form.formState.isValid}
-          >
+          <Button type="submit" className="w-28  mt-2 py-6 self-end">
             Next
           </Button>
         )}
