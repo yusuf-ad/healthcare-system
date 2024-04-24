@@ -34,10 +34,10 @@ import { cn } from "@/lib/utils";
 import { setAppointment } from "@/slices/appointmentSlice";
 
 const formSchema = z.object({
-  department: z.string(),
-  doctor: z.string(),
-  date: z.date(),
-  time: z.string(),
+  department: z.string({ required_error: "Please select a department" }),
+  doctor: z.string({ required_error: "Please select a doctor" }),
+  date: z.date({ required_error: "Please select a date" }),
+  time: z.string({ required_error: "Please select a time" }),
 });
 
 function BookingForm({ currentPage, setCurrentPage, page, setPage }) {
@@ -73,7 +73,7 @@ function BookingForm({ currentPage, setCurrentPage, page, setPage }) {
               <FormItem>
                 <FormLabel> Select Department</FormLabel>
                 <Select
-                  onValueChange={field.onChange}
+                  onValueChange={(value) => field.onChange(value)}
                   defaultValue={field.value}
                 >
                   <FormControl>
@@ -137,7 +137,7 @@ function BookingForm({ currentPage, setCurrentPage, page, setPage }) {
             name="date"
             render={({ field }) => (
               <FormItem className="flex flex-col">
-                <FormLabel className="mt-[10px]">Date of birth</FormLabel>
+                <FormLabel className="mt-[10px]">Select Date</FormLabel>
                 <Popover>
                   <PopoverTrigger asChild>
                     <FormControl>
