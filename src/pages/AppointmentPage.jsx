@@ -19,7 +19,7 @@ function AppointmentPage() {
   }, [page, navigate]);
 
   return (
-    <section className="py-12">
+    <section className="py-4 sm:py-6 md:py-12">
       <div className="max-w-5xl mx-auto px-6">
         <div className="flex justify-center mt-8">
           <AppointmentBreadcrumb setPage={setPage} currentPage={currentPage} />

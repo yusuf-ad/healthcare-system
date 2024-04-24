@@ -15,11 +15,13 @@ function ConfirmScreen() {
   const navigate = useNavigate();
 
   return (
-    <div className="mx-auto max-w-xl rounded-sm bg-white py-6 px-8 flex flex-col shadow-md">
-      <h2 className="text-xl font-bold mb-3">Confirm your Appointment</h2>
+    <div className="mx-auto max-w-xl rounded-sm bg-white px-4 py-6 xs:py-6 xs:px-8 flex flex-col shadow-md">
+      <h2 className="xs:text-xl text-lg font-bold mb-3">
+        Confirm your Appointment
+      </h2>
       <div className="w-full h-[1px] bg-slate-200 mb-6"></div>
 
-      <table className="w-full border-spacing-1 border-separate">
+      <table className="w-full border-spacing-1 border-separate text-sm">
         <thead className="text-left text-black font-bold ">
           <tr>
             <th>Fullname</th>
@@ -44,7 +46,7 @@ function ConfirmScreen() {
         <tbody className="text-left text-slate-500 capitalize">
           <tr>
             <td>{department} </td>
-            <td>{doctor} </td>
+            <td>{doctor.split("-").join(" ")} </td>
             <td></td>
           </tr>
         </tbody>

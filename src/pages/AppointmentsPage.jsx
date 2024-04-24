@@ -103,7 +103,7 @@ function AppointmentsPage() {
                         <PopoverTrigger>
                           <i className="fa-solid fa-ellipsis-vertical text-lg text-slate-800"></i>
                         </PopoverTrigger>
-                        <PopoverContent className=" py-2 pb-4 w-52 ">
+                        <PopoverContent className="absolute -left-4 py-2 pb-4 xs:w-52 w-36 text-sm xs:text-base">
                           <ul>
                             <li
                               onClick={() =>
@@ -154,7 +154,7 @@ function AppointmentsPage() {
                       <PopoverTrigger>
                         <i className="fa-solid fa-eye text-lg text-slate-800"></i>
                       </PopoverTrigger>
-                      <PopoverContent className=" py-2 pb-4 max-w-max ">
+                      <PopoverContent className=" py-2 pb-4 max-w-max absolute -right-4   text-sm xs:text-base">
                         <ul>
                           <li className="border-b-2 py-3 px-2 capitalize">
                             Fullname: {appointment.name} {appointment.surname}

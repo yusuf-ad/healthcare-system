@@ -63,7 +63,7 @@ function BookingForm({ currentPage, setCurrentPage, page, setPage }) {
     <Form {...form}>
       <form
         onSubmit={form.handleSubmit(onSuccess)}
-        className="flex flex-col gap-6 justify-end"
+        className="flex flex-col gap-6 xs:px-8 justify-end w-52 xs:w-[420px]  lg:w-full"
       >
         <div className="grid w-full max-w-xl items-center gap-3">
           <FormField
@@ -74,7 +74,7 @@ function BookingForm({ currentPage, setCurrentPage, page, setPage }) {
                 <FormLabel> Select Department</FormLabel>
                 <Select
                   onValueChange={(value) => field.onChange(value)}
-                  defaultValue={field.value}
+                  defaultValue={field.value || ""}
                 >
                   <FormControl>
                     <SelectTrigger>
@@ -111,7 +111,7 @@ function BookingForm({ currentPage, setCurrentPage, page, setPage }) {
                 <FormLabel>Select Doctor</FormLabel>
                 <Select
                   onValueChange={field.onChange}
-                  defaultValue={field.value}
+                  defaultValue={field.value || ""}
                 >
                   <FormControl>
                     <SelectTrigger>
@@ -157,7 +157,7 @@ function BookingForm({ currentPage, setCurrentPage, page, setPage }) {
                       </Button>
                     </FormControl>
                   </PopoverTrigger>
-                  <PopoverContent className="w-auto p-0" align="start">
+                  <PopoverContent className="sm:w-auto p-0" align="start">
                     <Calendar
                       mode="single"
                       selected={field.value}

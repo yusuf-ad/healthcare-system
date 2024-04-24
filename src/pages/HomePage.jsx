@@ -6,7 +6,7 @@ function HomePage() {
     <main>
       {/* hero */}
       <section className="bg-hero md:py-18 md:px-24 py-8 px-4 pb-0 sm:pr-4">
-        <div className="max-w-7xl mx-auto max-h-[840px] grid xs:grid-cols-2 overflow-hidden ">
+        <div className="max-w-7xl mx-auto max-h-[calc(100vh-96px)] grid xs:grid-cols-2 overflow-hidden ">
           <div className="self-center max-w-[480px] flex flex-col gap-8 py-6 xs:items-start items-center">
             <h1 className="md:text-5xl xs:text-3xl text-xl text-white font-bold md:leading-[60px] text-center xs:text-left">
               Book Your Doctor Appointment Online.

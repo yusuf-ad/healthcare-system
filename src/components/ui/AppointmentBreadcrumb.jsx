@@ -13,7 +13,7 @@ function AppointmentBreadcrumb({ setPage, currentPage }) {
 
   return (
     <Breadcrumb>
-      <BreadcrumbList>
+      <BreadcrumbList className="flex flex-col md:flex-row">
         <BreadcrumbItem onClick={() => setPage(1)}>
           <Link to={"/healthcare-system/appointment/info"}>
             {location.pathname.includes("info") ||
@@ -27,7 +27,7 @@ function AppointmentBreadcrumb({ setPage, currentPage }) {
             )}
           </Link>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+        <BreadcrumbSeparator className={"rotate-90 md:rotate-0"} />
 
         <BreadcrumbItem
           onClick={() => setPage(2)}
@@ -43,7 +43,7 @@ function AppointmentBreadcrumb({ setPage, currentPage }) {
             )}
           </Link>
         </BreadcrumbItem>
-        <BreadcrumbSeparator />
+        <BreadcrumbSeparator className={"rotate-90 md:rotate-0"} />
 
         <BreadcrumbItem
           className={`${+currentPage < 3 && "disabled"}`}
