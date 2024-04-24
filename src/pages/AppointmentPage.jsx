@@ -25,7 +25,7 @@ function AppointmentPage() {
           <AppointmentBreadcrumb setPage={setPage} currentPage={currentPage} />
         </div>
 
-        <div className="mt-12 mx-auto grid lg:grid-cols-2 lg:items-start justify-center  gap-8">
+        <div className="mt-12  mx-auto grid lg:grid-cols-2 lg:items-start justify-center  gap-8">
           {(+page === 1 || +page === 2) && (
             <UserInfoForm
               currentPage={currentPage}
