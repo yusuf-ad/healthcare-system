@@ -5,10 +5,11 @@ import { useEffect, useRef, useState } from "react";
 function App() {
   const [isFixed, setIsFixed] = useState(false);
   const header = useRef();
+  const [isNavOpen, setIsNavOpen] = useState(false);
 
   useEffect(() => {
     const checkScroll = () => {
-      if (window.scrollY > 16) {
+      if (window.scrollY > 24) {
         setIsFixed(true);
       } else {
         setIsFixed(false);
@@ -24,16 +25,23 @@ function App() {
 
   return (
     <>
-      {isFixed && <div style={{ height: "96px" }}></div>}
+      {isFixed && <div style={{ height: "94px" }}></div>}
       <header
         ref={header}
         className={`${
-          isFixed && "sticky"
-        } bg-white/80 w-full inset-0 flex justify-between items-center py-6 px-4 sm:px-6  lg:py-6 lg:px-16`}
+          isFixed && "fixed inset-0 "
+        } bg-white/80 w-full h-24 z-50 flex justify-between items-center py-6 px-4 sm:px-6  lg:py-6 lg:px-16`}
       >
         <Link to="/healthcare-system/">
           <div className="font-bold tracking-widest text-lg">TheCure</div>
         </Link>
+
+        {/* mobile nav */}
+        <nav onClick={() => setIsNavOpen(!isNavOpen)} className="md:hidden">
+          <button className="cursor-pointer">
+            <i className="fa-solid fa-bars text-3xl"></i>
+          </button>
+        </nav>
 
         {/* dekstop nav */}
         <nav className="hidden md:flex gap-6 lg:gap-8">
@@ -62,14 +70,14 @@ function App() {
             </Button>
           </NavLink>
         </nav>
-
-        {/* mobile nav */}
-        <nav className="md:hidden">
-          <button className="cursor-pointer">
-            <i className="fa-solid fa-bars text-3xl"></i>
-          </button>
-        </nav>
       </header>
+      <div
+        className={`${
+          isNavOpen
+            ? "h-screen pointer-events-auto opacity-100 -translate-y-0"
+            : "h-0 pointer-events-none opacity-0 -translate-y-full overflow-hidden"
+        } sticky z-30 top-[96px]  bg-red-400 transition-all duration-300 `}
+      ></div>
 
       <Outlet />
     </>
