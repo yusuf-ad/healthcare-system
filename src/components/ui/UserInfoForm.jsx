@@ -22,12 +22,12 @@ import { useDispatch, useSelector } from "react-redux";
 const formSchema = z.object({
   name: z
     .string()
-    .min(3, { message: "Name must be at least 3 characters long" })
-    .max(15, { message: "Name must be at most 15 characters long" }),
+    .min(1, { message: "Name is required" })
+    .max(24, { message: "Name must be at most 24 characters long" }),
   surname: z
     .string()
-    .min(2, { message: "Surname must be at least 2 characters long" })
-    .max(15, { message: "Surname must be at most 15 characters long" }),
+    .min(1, { message: "Surname is required" })
+    .max(24, { message: "Surname must be at most 24 characters long" }),
   phone: z.string().refine((phone) => isValidPhone(phone), {
     message: "Phone number should be in this format: 0 555 555 55 55",
   }),

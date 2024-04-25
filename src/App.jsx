@@ -9,7 +9,6 @@ function App() {
 
   useEffect(() => {
     const checkScroll = () => {
-      console.log(window.scrollY);
       if (window.scrollY > 0) {
         setIsFixed(true);
       } else {
@@ -52,19 +51,21 @@ function App() {
 
   return (
     <>
-      {/* {isFixed && <div className="sm:h-[96px] h-[90px]"></div>} */}
       <header
         ref={header}
         className={`${
-          isFixed && "fixed inset-0"
-        } bg-white/80 w-full  sm:h-24 sticky h-20 z-50 flex justify-between items-center px-4 sm:px-6 lg:py-6 lg:px-16`}
+          isFixed && "fixed"
+        } bg-white/80 w-full sm:h-24 sticky inset-0 h-20 z-50 flex justify-between items-center px-4 sm:px-6 lg:py-6 lg:px-16 shadow-md`}
       >
         <Link to="/healthcare-system/">
           <div className="font-bold tracking-widest text-lg">TheCure</div>
         </Link>
 
         {/* mobile nav */}
-        <nav onClick={() => setIsNavOpen(!isNavOpen)} className="md:hidden">
+        <nav
+          onClick={() => setIsNavOpen(!isNavOpen)}
+          className="md:hidden absolute right-1 sm:right-6 top-1/2 -translate-x-1/2 -translate-y-1/2  z-50"
+        >
           <button className="cursor-pointer">
             <i className="fa-solid fa-bars text-3xl"></i>
           </button>

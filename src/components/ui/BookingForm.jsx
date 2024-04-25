@@ -34,10 +34,10 @@ import { cn } from "@/lib/utils";
 import { setAppointment } from "@/slices/appointmentSlice";
 
 const formSchema = z.object({
-  department: z.string({ required_error: "Please select a department" }),
-  doctor: z.string({ required_error: "Please select a doctor" }),
-  date: z.date({ required_error: "Please select a date" }),
-  time: z.string({ required_error: "Please select a time" }),
+  department: z.string().min(2, { message: "Please select a department" }),
+  doctor: z.string().min(2, { message: "Please select a doctor" }),
+  date: z.date(),
+  time: z.string().min(2, { message: "Please select a date" }),
 });
 
 function BookingForm({ currentPage, setCurrentPage, page, setPage }) {
