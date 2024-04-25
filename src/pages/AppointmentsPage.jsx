@@ -59,7 +59,7 @@ function AppointmentsPage() {
   if (appointments.length === 0) {
     return (
       <section className="py-12">
-        <div className="max-w-5xl mx-auto font-bold">
+        <div className="max-w-5xl mx-auto font-bold  px-8 xl:px-0">
           <p className="">There is no appointments yet. </p>
 
           <Button

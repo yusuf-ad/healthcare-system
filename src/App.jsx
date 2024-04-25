@@ -9,7 +9,8 @@ function App() {
 
   useEffect(() => {
     const checkScroll = () => {
-      if (window.scrollY > 8) {
+      console.log(window.scrollY);
+      if (window.scrollY > 0) {
         setIsFixed(true);
       } else {
         setIsFixed(false);
@@ -22,6 +23,20 @@ function App() {
       window.removeEventListener("scroll", checkScroll);
     };
   }, []);
+
+  useEffect(() => {
+    const checkResize = () => {
+      if (window.innerWidth >= 800 && isNavOpen) {
+        setIsNavOpen(false);
+      }
+    };
+
+    window.addEventListener("scroll", checkResize);
+
+    return () => {
+      window.removeEventListener("scroll", checkResize);
+    };
+  }, [isNavOpen]);
 
   useEffect(() => {
     if (isNavOpen) {
@@ -37,12 +52,12 @@ function App() {
 
   return (
     <>
-      {isFixed && <div className="sm:h-[96px] h-[90px]"></div>}
+      {/* {isFixed && <div className="sm:h-[96px] h-[90px]"></div>} */}
       <header
         ref={header}
         className={`${
           isFixed && "fixed inset-0"
-        } bg-white/80 w-full sm:h-24 h-20 z-50 flex justify-between items-center px-4 sm:px-6 lg:py-6 lg:px-16`}
+        } bg-white/80 w-full  sm:h-24 sticky h-20 z-50 flex justify-between items-center px-4 sm:px-6 lg:py-6 lg:px-16`}
       >
         <Link to="/healthcare-system/">
           <div className="font-bold tracking-widest text-lg">TheCure</div>
